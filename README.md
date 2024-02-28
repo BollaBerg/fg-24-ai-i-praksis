@@ -10,10 +10,18 @@ pip install -U pip
 pip install -r requirements.txt
 ```
 
-## Set opp token
+## Sett opp token
 
 Hentes fra App -> `OAuth & Permissions` -> `Bot User OAuth Token`
 
 ```bash
 export SLACK_BOT_TOKEN=xxx
+```
+
+## Sett opp App-Level Token
+
+Hentes fra App -> `Basic information` -> `App-Level Tokens` -> Velg en token du vil bruke
+
+```bash
+export SLACK_APP_LEVEL_TOKEN=xxx
 ```
