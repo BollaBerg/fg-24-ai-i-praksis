@@ -1,3 +1,8 @@
+# OWN STUFF
+data/
+.idea/
+# END OF OWN STUFF
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
