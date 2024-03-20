@@ -8,10 +8,10 @@ import json
 import pandas as pd
 from pathlib import Path
 
-app = App()
-
 
 def open_socket():
+    app = App()
+
     token = os.environ.get("SLACK_APP_LEVEL_TOKEN")
     return app.client.apps_connections_open(app_token=token)
 
@@ -39,17 +39,17 @@ def listen_for_text(wanted_text):
     return listener
 
 
-def get_string_similarity(a: str, b: str):
-    return random.random()
+def get_string_similarity(row, message: str) -> float:
+    return len(row.loc["message"]) - len(message)
 
 
 def get_closest_strings(data: pd.DataFrame, message: str, n_closest: int = 3):
-    data["similarity"] = get_string_similarity(data["message"], message)
+    data["similarity"] = data.apply(lambda row: get_string_similarity(row, message), axis=1)
     return data.nlargest(n_closest, "similarity")
 
 
 def get_data(data_path: Path = Path().absolute() / "data" / "processed" / "all_2023.txt"):
-    return pd.read_csv(data_path, delimiter=",", quotechar="|", dtype="str")
+    return pd.read_csv(data_path, delimiter=",", quotechar="|", dtype="str").dropna(axis=0)
 
 
 if __name__ == "__main__":
