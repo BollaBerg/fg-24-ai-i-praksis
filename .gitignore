@@ -1,5 +1,7 @@
 # OWN STUFF
-data/
+data/*
+!data/.gitkeep
+
 .idea/
 # END OF OWN STUFF
 
