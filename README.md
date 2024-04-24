@@ -25,3 +25,12 @@ Hentes fra App -> `Basic information` -> `App-Level Tokens` -> Velg en token du 
 ```bash
 export SLACK_APP_LEVEL_TOKEN=xxx
 ```
+
+# Kjør word2vec
+
+Last ned modellen med
+```bash
+python -m spacy download nb_core_news_lg
+```
+
+og kjør filen `word2vec.py`
